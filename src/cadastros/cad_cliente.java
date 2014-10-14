@@ -15,9 +15,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.MaskFormatter;
 import utilitarios.conexao;
 public class cad_cliente extends javax.swing.JFrame {
     
+    //MaskFormatter = formatoCpf, formatoCep,    
     int navega = 0; //para sabermos em qual botão foi clicado
     int linha_selecionada = 0;
     conexao con_cliente;
