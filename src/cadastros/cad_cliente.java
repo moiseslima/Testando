@@ -15,17 +15,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.text.MaskFormatter;
 import utilitarios.conexao;
 public class cad_cliente extends javax.swing.JFrame {
     
-    //MaskFormatter = formatoCpf, formatoCep,    
     int navega = 0; //para sabermos em qual botão foi clicado
     int linha_selecionada = 0;
     conexao con_cliente;
     int inicia_combo = 0;
     String ordenacao = "nome";
-    
+        
     /**
      * Creates new form cad_cliente
      */
@@ -98,19 +96,13 @@ public class cad_cliente extends javax.swing.JFrame {
         cb_Cidades = new javax.swing.JComboBox();
         jButton2 = new javax.swing.JButton();
         cep = new javax.swing.JLabel();
-        tf_cep = new javax.swing.JTextField();
         RG = new javax.swing.JLabel();
         tf_rg = new javax.swing.JTextField();
         CPF = new javax.swing.JLabel();
-        tf_cpf = new javax.swing.JTextField();
         DataNasc = new javax.swing.JLabel();
-        tf_Nascimento = new javax.swing.JTextField();
         FoneResidencial = new javax.swing.JLabel();
-        tf_FoneRes = new javax.swing.JTextField();
         FoneComercial = new javax.swing.JLabel();
-        tf_FoneCom = new javax.swing.JTextField();
         FoneCel = new javax.swing.JLabel();
-        tf_FoneCel = new javax.swing.JTextField();
         Email = new javax.swing.JLabel();
         tf_Email = new javax.swing.JTextField();
         DataDeCadastro = new javax.swing.JLabel();
@@ -119,6 +111,13 @@ public class cad_cliente extends javax.swing.JFrame {
         tf_observacao = new javax.swing.JTextField();
         Foto = new javax.swing.JLabel();
         tf_Foto = new javax.swing.JTextField();
+        tf_cpf = new javax.swing.JFormattedTextField();
+
+        tf_cep = new javax.swing.JFormattedTextField();
+        tf_Data = new javax.swing.JFormattedTextField();
+        tf_FoneRes = new javax.swing.JFormattedTextField();
+        tf_FoneCom = new javax.swing.JFormattedTextField();
+        tf_FoneCel = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Manutenção do Cadastro de cidades");
@@ -305,12 +304,6 @@ public class cad_cliente extends javax.swing.JFrame {
 
         cep.setText("Cep:");
 
-        tf_cep.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_cepActionPerformed(evt);
-            }
-        });
-
         RG.setText("RG:");
 
         CPF.setText("CPF:");
@@ -331,6 +324,24 @@ public class cad_cliente extends javax.swing.JFrame {
 
         Foto.setText("Foto:");
 
+        try {
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        tf_cpf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_cpfActionPerformed(evt);
+            }
+        });
+
+        try {
+            tf_cep.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-### ")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        tf_Data.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("d/M/yy"))));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -345,25 +356,25 @@ public class cad_cliente extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(FoneResidencial)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(tf_FoneRes, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(Endereco)
+                                            .addComponent(bairro))
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(Endereco)
-                                                    .addComponent(bairro))
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(tf_codBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(16, 16, 16))
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addGap(18, 18, 18)
-                                                        .addComponent(tf_codLog, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(tf_codBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(63, 63, 63))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(18, 18, 18)
+                                                .addComponent(tf_codLog, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                .addComponent(FoneResidencial)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(tf_FoneRes))
+                                            .addGroup(layout.createSequentialGroup()
                                                 .addGap(0, 0, Short.MAX_VALUE)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(tf_rg, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -375,8 +386,8 @@ public class cad_cliente extends javax.swing.JFrame {
                                         .addGap(47, 47, 47)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(4, 4, 4)
-                                        .addComponent(cb_logradouro, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(35, 35, 35)
+                                        .addComponent(cb_logradouro, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(34, 34, 34)
                                         .addComponent(numeroLog, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -397,12 +408,11 @@ public class cad_cliente extends javax.swing.JFrame {
                                                     .addComponent(cb_bairro, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addGroup(layout.createSequentialGroup()
                                                         .addGap(48, 48, 48)
-                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                            .addComponent(tf_FoneCom, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addGroup(layout.createSequentialGroup()
-                                                                .addComponent(CPF)
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(tf_cpf, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                                        .addComponent(CPF)
+                                                        .addGap(18, 18, 18)
+                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                            .addComponent(tf_FoneCom)
+                                                            .addComponent(tf_cpf, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)))))
                                             .addComponent(FoneComercial))
                                         .addGap(29, 29, 29)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -415,22 +425,25 @@ public class cad_cliente extends javax.swing.JFrame {
                                                     .addComponent(DataNasc))
                                                 .addGap(20, 20, 20)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(tf_Data, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addGroup(layout.createSequentialGroup()
                                                         .addComponent(cb_Cidades, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addGap(18, 18, 18)
                                                         .addComponent(cep)
-                                                        .addGap(18, 18, 18)
-                                                        .addComponent(tf_cep, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addComponent(tf_Nascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(tf_cep, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                     .addComponent(DataDeCadastro)
                                                     .addComponent(FoneCel, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(18, 18, 18)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(tf_FoneCel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(tf_DataCad, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
-                        .addGap(249, 249, 249))
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addGap(18, 18, 18)
+                                                        .addComponent(tf_DataCad, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addGap(33, 33, 33)
+                                                        .addComponent(tf_FoneCel, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))))))))
+                        .addGap(223, 223, 223))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -510,17 +523,19 @@ public class cad_cliente extends javax.swing.JFrame {
                     .addComponent(RG)
                     .addComponent(tf_rg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CPF)
-                    .addComponent(tf_cpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(DataNasc)
-                    .addComponent(tf_Nascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tf_cpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_Data, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(FoneResidencial)
-                    .addComponent(tf_FoneRes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(FoneComercial)
-                    .addComponent(tf_FoneCom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(FoneCel)
-                    .addComponent(tf_FoneCel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(FoneResidencial)
+                            .addComponent(FoneComercial)
+                            .addComponent(FoneCel)
+                            .addComponent(tf_FoneRes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(tf_FoneCom, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tf_FoneCel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
@@ -647,9 +662,9 @@ public class cad_cliente extends javax.swing.JFrame {
        cb_logradouro.setSelectedItem("AC");
        tf_nome.requestFocus();
        tf_codigo.setEditable(false);
-        preencher_jtable();
-        botao_gravar.setEnabled(true);
-        botao_inserir.setEnabled(false);
+       preencher_jtable();
+       botao_gravar.setEnabled(true);
+       botao_inserir.setEnabled(false);
     }//GEN-LAST:event_botao_inserirActionPerformed
 
     private void botao_gravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_gravarActionPerformed
@@ -773,7 +788,7 @@ public class cad_cliente extends javax.swing.JFrame {
             con_cliente.resultset.first();
             String igual = "n";
             int tamanho_pesquisa = tf_pesquisa.getText().length();
-            while(igual == "n")
+            while("n".equals(igual))
             {
                 String pesquisado = con_cliente.resultset.getString("nome").substring(0,(tamanho_pesquisa));
 
@@ -812,9 +827,9 @@ public class cad_cliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_codLogActionPerformed
 
-    private void tf_cepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_cepActionPerformed
+    private void tf_cpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_cpfActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tf_cepActionPerformed
+    }//GEN-LAST:event_tf_cpfActionPerformed
 
     /**
      * @param args the command line arguments
@@ -891,20 +906,20 @@ public class cad_cliente extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel nome;
     private javax.swing.JLabel numeroLog;
+    private javax.swing.JFormattedTextField tf_Data;
     private javax.swing.JTextField tf_DataCad;
     private javax.swing.JTextField tf_Email;
-    private javax.swing.JTextField tf_FoneCel;
-    private javax.swing.JTextField tf_FoneCom;
-    private javax.swing.JTextField tf_FoneRes;
+    private javax.swing.JFormattedTextField tf_FoneCel;
+    private javax.swing.JFormattedTextField tf_FoneCom;
+    private javax.swing.JFormattedTextField tf_FoneRes;
     private javax.swing.JTextField tf_Foto;
-    private javax.swing.JTextField tf_Nascimento;
-    private javax.swing.JTextField tf_cep;
+    private javax.swing.JFormattedTextField tf_cep;
     private javax.swing.JTextField tf_codBairro;
     private javax.swing.JTextField tf_codCidade;
     private javax.swing.JTextField tf_codLog;
     private javax.swing.JTextField tf_codigo;
     private javax.swing.JTextField tf_complemento;
-    private javax.swing.JTextField tf_cpf;
+    private javax.swing.JFormattedTextField tf_cpf;
     private javax.swing.JTextField tf_nome;
     private javax.swing.JTextField tf_numeroLog;
     private javax.swing.JTextField tf_observacao;

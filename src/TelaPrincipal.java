@@ -1,12 +1,9 @@
 import cadastros.cad_bairros;
 import cadastros.cad_cidades;
+import cadastros.Funcionarios;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
-import utilitarios.data;
-import com.jgoodies.looks.plastic.PlasticLookAndFeel;  
-import com.jgoodies.looks.windows.WindowsLookAndFeel;
-import com.jgoodies.looks.plastic.PlasticXPLookAndFeel;
 import utilitarios.data;
 
 
@@ -152,6 +149,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(841, 59));
 
+        Sair.setIcon(new javax.swing.ImageIcon("C:\\Users\\moises\\Desktop\\Icones Projeto\\sair32x32.png")); // NOI18N
         Sair.setText("Sair");
         Sair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,11 +157,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        Estoque.setIcon(new javax.swing.ImageIcon("C:\\Users\\moises\\Desktop\\ícones\\Forklift-32.png")); // NOI18N
+        Estoque.setIcon(new javax.swing.ImageIcon("C:\\Users\\moises\\Desktop\\Icones Projeto\\empilhadeira48x48.png")); // NOI18N
         Estoque.setText("Estoque");
 
+        Botao_funcionario.setIcon(new javax.swing.ImageIcon("C:\\Users\\moises\\Desktop\\Icones Projeto\\Funcionario 48x48.png")); // NOI18N
         Botao_funcionario.setText("Funcionários");
+        Botao_funcionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Botao_funcionarioActionPerformed(evt);
+            }
+        });
 
+        botao_cidades_menu2.setIcon(new javax.swing.ImageIcon("C:\\Users\\moises\\Desktop\\Icones Projeto\\cidade48x48.png")); // NOI18N
+        botao_cidades_menu2.setMnemonic('c');
         botao_cidades_menu2.setText("Cidades");
         botao_cidades_menu2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -178,7 +184,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        botao_clientes.setIcon(new javax.swing.ImageIcon("C:\\Users\\moises\\Desktop\\Icones Projeto\\Cliente48x48.png")); // NOI18N
         botao_clientes.setText("Clientes");
+        botao_clientes.setToolTipText("clique F1 para acessar vendas");
         botao_clientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botao_clientesActionPerformed(evt);
@@ -190,34 +198,32 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(botao_clientes, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(Botao_funcionario, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addGap(18, 18, 18)
                 .addComponent(botao_cidades_menu2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addComponent(botao_bairros, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
+                .addGap(18, 18, 18)
                 .addComponent(Estoque, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
+                .addGap(18, 18, 18)
+                .addComponent(botao_bairros, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(Sair, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+                .addContainerGap(300, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addContainerGap(37, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
+                    .addComponent(Botao_funcionario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(botao_clientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botao_bairros, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 2, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Sair, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Estoque, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(botao_cidades_menu2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Botao_funcionario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(5, 5, 5))
+                    .addComponent(Estoque, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botao_bairros, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Sair, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         label_criacao.setText("Sistema Desenvolvido Por: Moisés Lima e João Souza, Developers na Empresa I-SYS criação de sistemas");
@@ -230,6 +236,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         label_imagem.setIcon(new javax.swing.ImageIcon("C:\\Users\\moises\\Pictures\\My Screen Shots\\LogoEmpresaNome3D.jpg")); // NOI18N
 
+        menu_cadastros.setIcon(new javax.swing.ImageIcon("C:\\Users\\moises\\Desktop\\Icones Projeto\\add32x32.png")); // NOI18N
         menu_cadastros.setMnemonic('c');
         menu_cadastros.setText("Cadastros");
 
@@ -327,6 +334,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(menu_relatorios);
 
+        menu_utilitarios.setIcon(new javax.swing.ImageIcon("C:\\Users\\moises\\Desktop\\Icones Projeto\\Utilitarios32x32.png")); // NOI18N
         menu_utilitarios.setText("Utilitários");
         menu_utilitarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -392,6 +400,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(menu_utilitarios);
 
+        menu_sair.setIcon(new javax.swing.ImageIcon("C:\\Users\\moises\\Desktop\\Icones Projeto\\sair32x32.png")); // NOI18N
         menu_sair.setText("Sair");
         menu_sair.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -407,27 +416,27 @@ public class TelaPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(label_criacao)
-                        .addGap(18, 18, 18)
-                        .addComponent(label_hora, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(label_hora, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(label_data, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(label_imagem, javax.swing.GroupLayout.PREFERRED_SIZE, 1033, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(label_imagem, javax.swing.GroupLayout.DEFAULT_SIZE, 645, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(label_imagem, javax.swing.GroupLayout.DEFAULT_SIZE, 573, Short.MAX_VALUE)
                 .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(label_data)
@@ -435,7 +444,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(label_criacao, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        setSize(new java.awt.Dimension(1280, 800));
+        setSize(new java.awt.Dimension(1091, 800));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -537,6 +546,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void botao_clientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_clientesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_botao_clientesActionPerformed
+
+    private void Botao_funcionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Botao_funcionarioActionPerformed
+         boolean True;
+        True = true;
+        new Funcionarios().setVisible(True);
+    }//GEN-LAST:event_Botao_funcionarioActionPerformed
 
     /**
      * @param args

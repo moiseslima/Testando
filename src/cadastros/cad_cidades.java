@@ -9,10 +9,7 @@ package cadastros;
  *
  * @author moises
  */
-import javax.swing.*;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import utilitarios.conexao;
@@ -530,7 +527,7 @@ public class cad_cidades extends javax.swing.JFrame {
                 con_cidade.resultset.first();
                 String igual = "n";
 
-                while(igual == "n")
+                while("n".equals(igual))
                 {
 
                     if (con_cidade.resultset.getString("nome").equals(cb_pesquisa.getSelectedItem()))
